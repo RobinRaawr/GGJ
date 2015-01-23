@@ -66,7 +66,10 @@ public class PlayerMovement : MonoBehaviour {
 
     void AvoidPlayerOverlap()
     {
-        //if(Vector3.Distance)
+        if (Vector3.Distance(this.transform.position, otherPlayer.transform.position) < 0)
+        {
+
+        }
     }
 
 }
