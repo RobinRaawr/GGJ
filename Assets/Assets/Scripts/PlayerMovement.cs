@@ -4,9 +4,10 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour
 {
 
-    public bool walking, ducking, jumping;
-    public KeyCode Up, Down;
-    public int minLane, maxLane;
+    public bool walking, ducking, jumping, isJumping;
+    public KeyCode Up, Down, jumpKey, duckKey;
+    public int minLane, maxLane, jumpingTimer;
+    int timer;
     public float laneHeight = 2.7f;
     public int startLane, currentLane;
     public GameObject otherPlayer;
@@ -14,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        walking = true;
         currentLane = startLane; // De currentLane wordt berekend in Movement();
     }
 
@@ -21,6 +23,18 @@ public class PlayerMovement : MonoBehaviour
     {
         CantGoOffLane();
         Movement();
+        if (isJumping == true)
+        {
+            timer++;
+            if (timer > jumpingTimer)
+            {
+                timer = 0;
+                this.transform.position += new Vector3(0f, -1f, 0f);
+                isJumping = false;
+                jumping = false;
+                walking = true;
+            }
+        }
     }
 
     void Movement()
@@ -44,6 +58,38 @@ public class PlayerMovement : MonoBehaviour
                 currentLane++;
             }
         }
+
+        if(Input.GetKeyDown(duckKey))
+        {
+            if (walking == true)
+            {
+                transform.localScale += new Vector3(0f, -0.6f, 0f);
+                ducking = true;
+                walking = false;
+            }
+        }
+
+        if (Input.GetKeyUp(duckKey))
+        {
+            if (ducking == true)
+            {
+                transform.localScale += new Vector3(0f, 0.6f, 0f);
+                ducking = false;
+                walking = true;
+            }
+        }
+
+        if (Input.GetKeyDown(jumpKey))
+        {
+            if (isJumping == false && walking == true)
+            {
+                this.transform.position += new Vector3(0f, 1f, 0f);
+                jumping = true;
+                walking = false;
+                isJumping = true;
+            }
+        }
+
     }
     void CantGoOffLane()
     {
