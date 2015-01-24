@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerMovement : MonoBehaviour
+{
 
-    public bool walking, ducking, jumping;    
+    public bool walking, ducking, jumping;
     public KeyCode Up, Down;
     public int minLane, maxLane;
     public float laneHeight = 2.7f;
     public int startLane, currentLane;
     public GameObject otherPlayer;
-    bool outOfBoundsMin = false, outOfBoundsMax = false;
+    bool outOfBoundsMin = false, outOfBoundsMax = false, isOverlapped = false;
 
     void Start()
     {
@@ -30,7 +31,7 @@ public class PlayerMovement : MonoBehaviour {
         {
             if (Input.GetKeyDown(Up))
             {
-                this.transform.position += new Vector3(0, laneHeight, 0);
+                this.transform.position += new Vector3(0, 0, laneHeight);
                 currentLane--;
             }
         }
@@ -39,7 +40,7 @@ public class PlayerMovement : MonoBehaviour {
         {
             if (Input.GetKeyDown(Down))
             {
-                this.transform.position -= new Vector3(0, laneHeight, 0);
+                this.transform.position -= new Vector3(0, 0, laneHeight);
                 currentLane++;
             }
         }
@@ -66,9 +67,13 @@ public class PlayerMovement : MonoBehaviour {
 
     void AvoidPlayerOverlap()
     {
-        if (Vector3.Distance(this.transform.position, otherPlayer.transform.position) < 0)
+        if (Vector3.Distance(this.transform.position, otherPlayer.transform.position) <= 0)
         {
-
+            isOverlapped = true;
+        }
+        else
+        {
+            isOverlapped = false;
         }
     }
 
