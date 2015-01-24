@@ -9,8 +9,14 @@ public class Enemie : MonoBehaviour {
 
 	void Start()
 	{
-		rigidbody.velocity = new Vector3(-moventspeed, rigidbody.velocity.y, rigidbody.velocity.z);
+		//rigidbody.velocity = new Vector3(-moventspeed, rigidbody.velocity.y, rigidbody.velocity.z);
+        //rigidbody.AddForce(new Vector3(-moventspeed, 0, 0));
 	}
+
+    void FixedUpdate()
+    {
+        rigidbody.AddForce(new Vector3(-moventspeed, 0, 0));
+    }
 
 	void OnBecameVisible()
 	{
