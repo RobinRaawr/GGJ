@@ -8,7 +8,6 @@ public class PlayerMovement : MonoBehaviour
 	public KeyCode Up, Down, jumpKey, duckKey;
 	
 	public int jumpingTimer;
-    public int jumpHeight;
 	int timer;
 	
 	public float laneHeight = 2.7f;
@@ -18,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
 	
 	void Start()
 	{
+        Physics.gravity = new Vector3(0, -15f, 0);
 		walking = true;
 		currentLane = startLane; // De currentLane wordt berekend in Movement();
 		CantGoOffLane();
@@ -73,33 +73,34 @@ public class PlayerMovement : MonoBehaviour
 				}
 			}
 		}
-		
-		if(Input.GetKeyDown(duckKey))
-		{
-			if (walking == true)
-			{
-				transform.localScale += new Vector3(0f, -0.6f, 0f);
-				ducking = true;
-				walking = false;
-			}
-		}
-		
-		if (Input.GetKeyUp(duckKey))
-		{
-			if (ducking == true)
-			{
+
+        if (Input.GetKeyDown(duckKey))
+        {
+            if (walking == true)
+            {
+                transform.localScale += new Vector3(0f, -0.6f, 0f);
+                transform.position += new Vector3(0, -1, 0);
+                ducking = true;
+                walking = false;
+            }
+        }
+
+        if (Input.GetKeyUp(duckKey))
+        {
+            if (ducking == true)
+            {
                 transform.position += new Vector3(0, 1.7f, 0);
-				transform.localScale += new Vector3(0f, 0.6f, 0f);                
-				ducking = false;
-				walking = true;
-			}
-            
-		}		
+                transform.localScale += new Vector3(0f, 0.6f, 0f);
+                ducking = false;
+                walking = true;
+            }
+
+        }		
 		if (Input.GetKeyDown(jumpKey))
 		{
 			if (isJumping == false && walking == true)
 			{
-				this.transform.position += new Vector3(0f, 1f, 0f);
+				this.transform.position += new Vector3(0f, 3f, 0f);
 				jumping = true;
 				walking = false;
 				isJumping = true;
