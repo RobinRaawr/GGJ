@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     int timer;
     public float laneHeight = 2.7f;
     public int startLane, currentLane;
-    public GameObject otherPlayer;
+    public GameObject otherPlayer, rope;
     bool outOfBoundsMin = false, outOfBoundsMax = false, isOverlapped = false;
 
     void Start()
