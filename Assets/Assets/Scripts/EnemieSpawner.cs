@@ -5,7 +5,9 @@ public class EnemieSpawner : MonoBehaviour {
 
 	public float time = 2;
 	public float timer;
+    public float laneWidth;
 	public float timerOffset = 1;
+    public float spawnPoint;
 	int lane;
 	float enemyXPos;
 	
@@ -14,7 +16,7 @@ public class EnemieSpawner : MonoBehaviour {
 	void Start()
 	{
 		//enemyXPos = Camera.main.transform.position.x + (Camera.main.orthographicSize * Screen.width / Screen.height);
-		Vector3 tempXpos = Camera.main.ViewportToWorldPoint (new Vector3(0, 1.1f , 0));
+		Vector3 tempXpos = Camera.main.ViewportToWorldPoint (new Vector3(0, 1.1f, spawnPoint));
 		enemyXPos = tempXpos.x;
 		SetTimer ();
 	}
@@ -25,7 +27,7 @@ public class EnemieSpawner : MonoBehaviour {
 		{
 			//Instanciate
 			lane = getLane();
-			float enemyZPos = lane;	//Lane * width baan
+			float enemyZPos = lane * laneWidth;	//Lane * width baan
 			Vector3 enemyPos = new Vector3(enemyXPos, 0, enemyZPos);
 			GameObject enemyPrefab = getEnemy();
 			GameObject spawnedEnemy = (GameObject)Instantiate(enemyPrefab, enemyPos, enemyPrefab.transform.rotation);
