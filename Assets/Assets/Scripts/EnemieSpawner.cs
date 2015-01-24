@@ -27,8 +27,8 @@ public class EnemieSpawner : MonoBehaviour {
 		{
 			//Instanciate
 			lane = getLane();
-			float enemyZPos = lane * laneWidth;
-			Vector3 enemyPos = new Vector3(enemyXPos, 1, enemyZPos);
+			float enemyZPos = lane * laneWidth + (laneWidth/2);
+			Vector3 enemyPos = new Vector3(enemyXPos, 0.2f, enemyZPos);
 			GameObject enemyPrefab = getEnemy();
 			GameObject spawnedEnemy = (GameObject)Instantiate(enemyPrefab, enemyPos, enemyPrefab.transform.rotation);
 			SetTimer();
