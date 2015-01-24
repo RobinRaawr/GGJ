@@ -5,10 +5,7 @@ public class PlayerMovement : MonoBehaviour
 {
 	
 	public bool walking, ducking, jumping, isJumping;
-	public KeyCode Up, Down, jumpKey, duckKey;
-	
-	public int jumpingTimer;
-	int timer;
+	public KeyCode Up, Down, duckKey;
 	
 	public float laneHeight = 2.7f;
 	public int startLane, currentLane;
@@ -26,60 +23,47 @@ public class PlayerMovement : MonoBehaviour
 	void Update()
 	{
 		Movement();
-		
-		if (isJumping == true)
-		{
-			timer++;
-			if (timer > jumpingTimer)
-			{
-				timer = 0;
-                this.transform.position += new Vector3(0f, -1f, 0f);
-				isJumping = false;
-				jumping = false;
-				walking = true;
-			}
-		}
 	}
-	
-	void Movement()
-	{
-		float verticalMovement = (Input.GetAxisRaw("Vertical"));
-		
-		if (Input.GetKeyDown(Up))
-		{
-			if (!outOfBoundsMin)
-			{
-				if (LaneFree(currentLane - 1))
-				{
-					this.transform.position += new Vector3(0, 0, laneHeight);
+
+    void Movement()
+    {
+        float verticalMovement = (Input.GetAxisRaw("Vertical"));
+
+        if (Input.GetKeyDown(Up))
+        {
+            if (!outOfBoundsMin)
+            {
+                if (LaneFree(currentLane - 1))
+                {
+                    this.transform.position += new Vector3(0, 0, laneHeight);
                     currentLane--;
-					CantGoOffLane();
-					rope.GetComponent<RopeStretching>().StretchRope();
-					hingeJoint.connectedBody = null;
-					hingeJoint.connectedBody = rope.rigidbody;
-					otherPlayer.hingeJoint.connectedBody = null;
-					otherPlayer.hingeJoint.connectedBody = rope.rigidbody;
-				}
-			}
-		}
-		
-		if (Input.GetKeyDown(Down))
-		{
-			if (!outOfBoundsMax)
-			{
-				if (LaneFree(currentLane + 1))
-				{
-					this.transform.position -= new Vector3(0, 0, laneHeight);
-					currentLane++;
-					CantGoOffLane();
-					rope.GetComponent<RopeStretching>().StretchRope();
-					hingeJoint.connectedBody = null;
-					hingeJoint.connectedBody = rope.rigidbody;
-					otherPlayer.hingeJoint.connectedBody = null;
-					otherPlayer.hingeJoint.connectedBody = rope.rigidbody;
-				}
-			}
-		}
+                    CantGoOffLane();
+                    rope.GetComponent<RopeStretching>().StretchRope();
+                    hingeJoint.connectedBody = null;
+                    hingeJoint.connectedBody = rope.rigidbody;
+                    otherPlayer.hingeJoint.connectedBody = null;
+                    otherPlayer.hingeJoint.connectedBody = rope.rigidbody;
+                }
+            }
+        }
+
+        if (Input.GetKeyDown(Down))
+        {
+            if (!outOfBoundsMax)
+            {
+                if (LaneFree(currentLane + 1))
+                {
+                    this.transform.position -= new Vector3(0, 0, laneHeight);
+                    currentLane++;
+                    CantGoOffLane();
+                    rope.GetComponent<RopeStretching>().StretchRope();
+                    hingeJoint.connectedBody = null;
+                    hingeJoint.connectedBody = rope.rigidbody;
+                    otherPlayer.hingeJoint.connectedBody = null;
+                    otherPlayer.hingeJoint.connectedBody = rope.rigidbody;
+                }
+            }
+        }
 
         if (Input.GetKeyDown(duckKey))
         {
@@ -102,18 +86,8 @@ public class PlayerMovement : MonoBehaviour
                 walking = true;
             }
 
-        }		
-		if (Input.GetKeyDown(jumpKey))
-		{
-			if (isJumping == false && walking == true)
-			{
-				this.transform.position += new Vector3(0f, 3f, 0f);
-				jumping = true;
-				walking = false;
-				isJumping = true;
-			}
-		}
-	}
+        }
+    }
 	void CantGoOffLane()
 	{
 		outOfBoundsMin = false;
