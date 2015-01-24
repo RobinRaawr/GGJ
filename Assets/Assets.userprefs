@@ -1,11 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlaneControl.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerMovement.cs">
     <Files>
-      <File FileName="Assets\Scripts\PlaneControl.cs" Line="15" Column="25" />
-      <File FileName="Assets\Scripts\Enemie.cs" Line="19" Column="2" />
-      <File FileName="Assets\Scripts\EnemieSpawner.cs" Line="50" Column="57" />
-      <File FileName="Assets\Scripts\PlayerMovement.cs" Line="63" Column="5" />
+      <File FileName="Assets\Scripts\CollisionControl.cs" Line="23" Column="24" />
+      <File FileName="Assets\Scripts\PlayerMovement.cs" Line="103" Column="6" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
