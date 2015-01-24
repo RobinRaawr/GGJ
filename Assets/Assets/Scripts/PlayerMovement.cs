@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 	public KeyCode Up, Down, jumpKey, duckKey;
 	
 	public int jumpingTimer;
+    public int jumpHeight;
 	int timer;
 	
 	public float laneHeight = 2.7f;
@@ -32,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
 			if (timer > jumpingTimer)
 			{
 				timer = 0;
-				this.transform.position += new Vector3(0f, -1f, 0f);
+                this.transform.position += new Vector3(0f, -1f, 0f);
 				isJumping = false;
 				jumping = false;
 				walking = true;
@@ -50,8 +51,9 @@ public class PlayerMovement : MonoBehaviour
 			{
 				if (LaneFree(currentLane - 1))
 				{
+                    
 					this.transform.position += new Vector3(0, 0, laneHeight);
-					currentLane--;
+                    currentLane--;
 					CantGoOffLane();
 				}
 			}
@@ -84,12 +86,13 @@ public class PlayerMovement : MonoBehaviour
 		{
 			if (ducking == true)
 			{
-				transform.localScale += new Vector3(0f, 0.6f, 0f);
+                transform.position += new Vector3(0, 1.7f, 0);
+				transform.localScale += new Vector3(0f, 0.6f, 0f);                
 				ducking = false;
 				walking = true;
 			}
-		}
-		
+            
+		}		
 		if (Input.GetKeyDown(jumpKey))
 		{
 			if (isJumping == false && walking == true)
@@ -114,6 +117,7 @@ public class PlayerMovement : MonoBehaviour
 	
 	bool LaneFree(int lane)
 	{
+        Debug.Log(lane);
 		if (lane == otherPlayer.GetComponent<PlayerMovement> ().currentLane)
 			return false;
 		else
