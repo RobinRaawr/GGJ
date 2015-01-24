@@ -5,7 +5,7 @@ public class PlayerMovement : MonoBehaviour
 {
 
     public bool walking, ducking, jumping, isJumping;
-    public KeyCode Up, Down, jumpKey, duckKey;
+    public KeyCode Left, Right, jumpKey, duckKey;
     public int minLane, maxLane, jumpingTimer;
     int timer;
     public float laneHeight = 2.7f;
@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (!outOfBoundsMin)
         {
-            if (Input.GetKeyDown(Up))
+            if (Input.GetKeyDown(Left))
             {
                 this.transform.position += new Vector3(0, 0, laneHeight);
                 currentLane--;
@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (!outOfBoundsMax)
         {
-            if (Input.GetKeyDown(Down))
+            if (Input.GetKeyDown(Right))
             {
                 this.transform.position -= new Vector3(0, 0, laneHeight);
                 currentLane++;
