@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Enemie.cs" />
      <Compile Include="Assets\Scripts\EnemieSpawner.cs" />
+     <Compile Include="Assets\Scripts\PlaneControl.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\StartScherm.cs" />
  <Reference Include="UnityEngine.UI">

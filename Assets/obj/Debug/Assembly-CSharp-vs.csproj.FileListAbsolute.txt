@@ -1,0 +1,12 @@
+D:\GGJ\Assets\Temp\bin\Debug\Assembly-CSharp.dll
+D:\GGJ\Assets\Temp\bin\Debug\Assembly-CSharp.pdb
+D:\GGJ\Assets\Temp\bin\Debug\UnityEditor.dll
+D:\GGJ\Assets\Temp\bin\Debug\UnityEngine.dll
+D:\GGJ\Assets\Temp\bin\Debug\UnityEngine.UI.dll
+D:\GGJ\Assets\Temp\bin\Debug\Mono.Cecil.dll
+D:\GGJ\Assets\Temp\bin\Debug\nunit.framework.dll
+D:\GGJ\Assets\Temp\bin\Debug\Unity.DataContract.dll
+D:\GGJ\Assets\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+D:\GGJ\Assets\obj\Debug\Assembly-CSharp-vs.csprojResolveAssemblyReference.cache
+D:\GGJ\Assets\obj\Debug\Assembly-CSharp.dll
+D:\GGJ\Assets\obj\Debug\Assembly-CSharp.pdb
