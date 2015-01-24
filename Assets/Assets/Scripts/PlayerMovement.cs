@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
 	
 	public float laneHeight = 2.7f;
 	public int startLane, currentLane;
-	public GameObject otherPlayer;
+	public GameObject otherPlayer, rope;
 	bool outOfBoundsMin = false, outOfBoundsMax = false;
 	
 	void Start()
@@ -55,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
 					this.transform.position += new Vector3(0, 0, laneHeight);
                     currentLane--;
 					CantGoOffLane();
+					rope.GetComponent<RopeStretching>().StretchRope();
 				}
 			}
 		}
@@ -68,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
 					this.transform.position -= new Vector3(0, 0, laneHeight);
 					currentLane++;
 					CantGoOffLane();
+					rope.GetComponent<RopeStretching>().StretchRope();
 				}
 			}
 		}
