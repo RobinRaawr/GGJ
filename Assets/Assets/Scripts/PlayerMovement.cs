@@ -79,6 +79,7 @@ public class PlayerMovement : MonoBehaviour
 			if (walking == true)
 			{
 				transform.localScale += new Vector3(0f, -0.6f, 0f);
+                transform.position += new Vector3(0, -1, 0);
 				ducking = true;
 				walking = false;
 			}
@@ -99,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
 		{
 			if (isJumping == false && walking == true)
 			{
-				this.transform.position += new Vector3(0f, 1f, 0f);
+				this.transform.position += new Vector3(0f, 3f, 0f);
 				jumping = true;
 				walking = false;
 				isJumping = true;
