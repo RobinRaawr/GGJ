@@ -20,6 +20,6 @@ public class CollisionControl : MonoBehaviour {
 			GameControl.control.Save();
 		}
 		yield return new WaitForSeconds (4);
-		//Application.LoadLevel ("Gameover");
+		Application.LoadLevel ("GameOver");
 	}
 }
