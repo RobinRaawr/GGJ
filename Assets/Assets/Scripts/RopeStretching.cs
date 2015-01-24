@@ -4,7 +4,6 @@ using System.Collections;
 public class RopeStretching : MonoBehaviour {
 
 	public Transform player1, player2;
-	public GameObject brokenRope;
 
 	bool ropebroke = false;
 
