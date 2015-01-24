@@ -17,6 +17,7 @@ public class GameControl : MonoBehaviour {
 	void Awake()
 	{
 		control = this;
+        DontDestroyOnLoad(gameObject);
 	}
 
 	public void Save()

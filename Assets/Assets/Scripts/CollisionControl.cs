@@ -4,16 +4,13 @@ using System.Collections;
 public class CollisionControl : MonoBehaviour {
 
 
-    void Start()
-    {
-        GameControl.control.score = 0;
-        GameControl.control.Save();
-    }
+
 
 	void OnCollisionEnter(Collision col)
 	{
 		if(col.gameObject.tag == "Enemy")
 		{
+            Score.score.notDead = false;
 			StartCoroutine(GameOver());
 			GameControl.control.Player1.rigidbody.constraints = RigidbodyConstraints.None;
 			GameControl.control.Player2.rigidbody.constraints = RigidbodyConstraints.None;
@@ -33,6 +30,6 @@ public class CollisionControl : MonoBehaviour {
 			GameControl.control.Save();
 		}
 		yield return new WaitForSeconds (4);
-		Application.LoadLevel ("Gameover");
+		Application.LoadLevel ("GameOver");
 	}
 }
