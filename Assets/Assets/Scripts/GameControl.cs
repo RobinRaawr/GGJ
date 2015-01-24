@@ -8,6 +8,8 @@ public class GameControl : MonoBehaviour {
 
 	public static GameControl control;
 
+	public GameObject Player1, Player2, Rope;
+
 	public string name;
 	public float score;
 	public float highscore;

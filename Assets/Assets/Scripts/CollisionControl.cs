@@ -3,11 +3,19 @@ using System.Collections;
 
 public class CollisionControl : MonoBehaviour {
 	
+
+
 	void OnCollisionEnter(Collision col)
 	{
 		if(col.gameObject.tag == "Enemy")
 		{
 			StartCoroutine(GameOver());
+			GameControl.control.Player1.rigidbody.constraints = RigidbodyConstraints.None;
+			GameControl.control.Player2.rigidbody.constraints = RigidbodyConstraints.None;
+			GameControl.control.Rope.rigidbody.constraints = RigidbodyConstraints.None;
+			//GameControl.control.Player1.hingeJoint.connectedBody = null;
+			//GameControl.control.Player2.hingeJoint.connectedBody = null;
+			Debug.Log("Enemy");
 		}
 	}
 

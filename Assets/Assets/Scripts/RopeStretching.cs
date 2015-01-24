@@ -22,14 +22,20 @@ public class RopeStretching : MonoBehaviour {
 		if(!ropebroke)
 		{
 			float scale = distanceBetweenPlayers ();
-			transform.localScale = new Vector3 (transform.localScale.x, transform.localScale.y, scale);
+			transform.localScale = new Vector3 (scale, transform.localScale.y, transform.localScale.z);
 			transform.position = new Vector3 (transform.position.x, transform.position.y, player1.transform.position.z - (scale/2));
 			if (scale >= 14)
 			{
 				ropebroke = true;
 				rigidbody.useGravity = true;
-				//GetComponent<CollisionControl> ().GameOver ();
+				GetComponent<CollisionControl> ().GameOver ();
 			}
 		}
+	}
+
+	public void RotateRope(GameObject player)
+	{
+
+		transform.RotateAround (transform.position - (Vector3.back * 2), Vector3.left, 15);
 	}
 }

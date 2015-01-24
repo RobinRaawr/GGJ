@@ -51,11 +51,14 @@ public class PlayerMovement : MonoBehaviour
 			{
 				if (LaneFree(currentLane - 1))
 				{
-                    
 					this.transform.position += new Vector3(0, 0, laneHeight);
                     currentLane--;
 					CantGoOffLane();
 					rope.GetComponent<RopeStretching>().StretchRope();
+					hingeJoint.connectedBody = null;
+					hingeJoint.connectedBody = rope.rigidbody;
+					otherPlayer.hingeJoint.connectedBody = null;
+					otherPlayer.hingeJoint.connectedBody = rope.rigidbody;
 				}
 			}
 		}
@@ -70,6 +73,10 @@ public class PlayerMovement : MonoBehaviour
 					currentLane++;
 					CantGoOffLane();
 					rope.GetComponent<RopeStretching>().StretchRope();
+					hingeJoint.connectedBody = null;
+					hingeJoint.connectedBody = rope.rigidbody;
+					otherPlayer.hingeJoint.connectedBody = null;
+					otherPlayer.hingeJoint.connectedBody = rope.rigidbody;
 				}
 			}
 		}
