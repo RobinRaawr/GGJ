@@ -47,6 +47,6 @@ public class EnemieSpawner : MonoBehaviour {
 
 	int getLane()
 	{
-		return Random.Range (0, 5);
+		return Random.Range (0, PlaneControl.control.lanes - 1);
 	}
 }
