@@ -4,6 +4,9 @@ using System.Collections;
 public class RopeStretching : MonoBehaviour {
 
 	public Transform player1, player2;
+	public GameObject brokenRope;
+
+	bool ropebroke = false;
 
 	void Start()
 	{
@@ -17,8 +20,17 @@ public class RopeStretching : MonoBehaviour {
 
 	public void StretchRope()
 	{
-		float scale = distanceBetweenPlayers ();
-		transform.localScale = new Vector3 (transform.localScale.x, transform.localScale.y, scale);
-		transform.position = new Vector3 (transform.position.x, transform.position.y, player1.transform.position.z - (scale/2));
+		if(!ropebroke)
+		{
+			float scale = distanceBetweenPlayers ();
+			transform.localScale = new Vector3 (transform.localScale.x, transform.localScale.y, scale);
+			transform.position = new Vector3 (transform.position.x, transform.position.y, player1.transform.position.z - (scale/2));
+			if (scale >= 10)
+			{
+				ropebroke = true;
+				rigidbody.useGravity = true;
+				//GetComponent<CollisionControl> ().GameOver ();
+			}
+		}
 	}
 }
