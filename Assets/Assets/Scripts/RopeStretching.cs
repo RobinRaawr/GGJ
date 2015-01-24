@@ -24,7 +24,7 @@ public class RopeStretching : MonoBehaviour {
 			float scale = distanceBetweenPlayers ();
 			transform.localScale = new Vector3 (transform.localScale.x, transform.localScale.y, scale);
 			transform.position = new Vector3 (transform.position.x, transform.position.y, player1.transform.position.z - (scale/2));
-			if (scale >= 10)
+			if (scale >= 14)
 			{
 				ropebroke = true;
 				rigidbody.useGravity = true;
