@@ -6,23 +6,26 @@ public class PlayerMovement : MonoBehaviour
 
     public bool walking, ducking, jumping, isJumping;
     public KeyCode Up, Down, jumpKey, duckKey;
-    public int minLane, maxLane, jumpingTimer;
+
+    public int jumpingTimer;
     int timer;
+	
     public float laneHeight = 2.7f;
     public int startLane, currentLane;
     public GameObject otherPlayer;
-    bool outOfBoundsMin = false, outOfBoundsMax = false, isOverlapped = false;
+	bool outOfBoundsMin = false, outOfBoundsMax = false;
 
     void Start()
     {
         walking = true;
         currentLane = startLane; // De currentLane wordt berekend in Movement();
+		CantGoOffLane();
     }
 
     void Update()
     {
-        CantGoOffLane();
         Movement();
+
         if (isJumping == true)
         {
             timer++;
@@ -41,21 +44,29 @@ public class PlayerMovement : MonoBehaviour
     {
         float verticalMovement = (Input.GetAxisRaw("Vertical"));
 
-        if (!outOfBoundsMin)
+        if (Input.GetKeyDown(Up))
         {
-            if (Input.GetKeyDown(Up))
-            {
-                this.transform.position += new Vector3(0, 0, laneHeight);
-                currentLane--;
+			if (!outOfBoundsMin)
+			{
+				if (LaneFree(currentLane - 1))
+				{
+					this.transform.position += new Vector3(0, 0, laneHeight);
+					currentLane--;
+					CantGoOffLane();
+				}
             }
         }
 
-        if (!outOfBoundsMax)
+        if (Input.GetKeyDown(Down))
         {
-            if (Input.GetKeyDown(Down))
-            {
-                this.transform.position -= new Vector3(0, 0, laneHeight);
-                currentLane++;
+			if (!outOfBoundsMax)
+			{
+				if (LaneFree(currentLane + 1))
+				{
+					this.transform.position -= new Vector3(0, 0, laneHeight);
+                	currentLane++;
+					CantGoOffLane();
+				}
             }
         }
 
@@ -89,38 +100,23 @@ public class PlayerMovement : MonoBehaviour
                 isJumping = true;
             }
         }
-
     }
     void CantGoOffLane()
     {
-        if (currentLane <= minLane)
-        {
+		outOfBoundsMin = false;
+		outOfBoundsMax = false;
+
+        if (currentLane <= 0)
             outOfBoundsMin = true;
-        }
-        else
-        {
-            outOfBoundsMin = false;
-        }
-        if (currentLane >= maxLane)
-        {
+        else if (currentLane >= PlaneControl.control.lanes - 1)
             outOfBoundsMax = true;
-        }
-        else
-        {
-            outOfBoundsMax = false;
-        }
     }
 
-    void AvoidPlayerOverlap()
-    {
-        if (Vector3.Distance(this.transform.position, otherPlayer.transform.position) <= 0)
-        {
-            isOverlapped = true;
-        }
-        else
-        {
-            isOverlapped = false;
-        }
-    }
-
+	bool LaneFree(int lane)
+	{
+		if (lane == otherPlayer.GetComponent<PlayerMovement> ().currentLane)
+			return false;
+		else
+			return true;
+	}
 }
