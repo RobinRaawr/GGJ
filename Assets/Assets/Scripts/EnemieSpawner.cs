@@ -42,11 +42,11 @@ public class EnemieSpawner : MonoBehaviour {
 
 	GameObject getEnemy()
 	{
-		return enemies [Random.Range (0, enemies.Length - 1)];
+		return enemies [Random.Range (0, enemies.Length)];
 	}
 
 	int getLane()
 	{
-		return Random.Range (0, PlaneControl.control.lanes - 1);
+		return Random.Range (0, 5);
 	}
 }
