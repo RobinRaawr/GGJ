@@ -28,6 +28,8 @@ public class RopeStretching : MonoBehaviour {
 			{
 				ropebroke = true;
 				rigidbody.useGravity = true;
+				player1.hingeJoint.connectedBody = null;
+				player2.hingeJoint.connectedBody = null;
 				GetComponent<CollisionControl> ().GameOver ();
 			}
 		}
