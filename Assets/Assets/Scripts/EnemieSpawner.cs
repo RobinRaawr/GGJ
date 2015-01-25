@@ -15,9 +15,9 @@ public class EnemieSpawner : MonoBehaviour {
 
 	void Start()
 	{
-		enemyXPos = 370;
+		enemyXPos = 200;
 		enemyYPos = 2f;
-		SetTimer ();
+		timer = 0;
 	}
 
 	void Update () {
@@ -26,13 +26,16 @@ public class EnemieSpawner : MonoBehaviour {
 		{
 			//Instanciate
 			lane = getLane();
-			float enemyZPos = lane * laneWidth + (laneWidth/2);
+			float enemyZPos = lane * laneWidth - (laneWidth/2);
 			Vector3 enemyPos = new Vector3(enemyXPos, enemyYPos, enemyZPos);
 			GameObject enemyPrefab = getEnemy();
 			GameObject spawnedEnemy = (GameObject)Instantiate(enemyPrefab, enemyPos, enemyPrefab.transform.rotation);
 			SetTimer();
-			time -= 0.04f;
-			timerOffset -= 0.01f;
+			if(time > 0.3f)
+				time -= 0.04f;
+			if(timerOffset > 0.2f)
+				timerOffset -= 0.01f;
+			enemyXPos = Random.Range(200, 400);
 		}
 	}
 
