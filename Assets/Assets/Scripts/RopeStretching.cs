@@ -34,10 +34,11 @@ public class RopeStretching : MonoBehaviour {
 			}
 			else
 			{
-			player1.hingeJoint.connectedBody = null;
-			player1.hingeJoint.connectedBody = rigidbody;
-			player2.hingeJoint.connectedBody = null;
-			player2.hingeJoint.connectedBody = rigidbody;
+				transform.eulerAngles = new Vector3(0, 90, 0);
+				player1.hingeJoint.connectedBody = null;
+				player1.hingeJoint.connectedBody = rigidbody;
+				player2.hingeJoint.connectedBody = null;
+				player2.hingeJoint.connectedBody = rigidbody;
 			}
 		}
 	}

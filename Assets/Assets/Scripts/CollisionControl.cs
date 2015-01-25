@@ -3,9 +3,6 @@ using System.Collections;
 
 public class CollisionControl : MonoBehaviour {
 
-
-
-
 	void OnCollisionEnter(Collision col)
 	{
 		if(col.gameObject.tag == "Enemy")
