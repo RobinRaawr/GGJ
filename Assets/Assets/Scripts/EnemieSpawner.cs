@@ -31,7 +31,7 @@ public class EnemieSpawner : MonoBehaviour {
 			GameObject enemyPrefab = getEnemy();
 			GameObject spawnedEnemy = (GameObject)Instantiate(enemyPrefab, enemyPos, enemyPrefab.transform.rotation);
 			SetTimer();
-			time -= 0.02f;
+			time -= 0.04f;
 			timerOffset -= 0.01f;
 		}
 	}

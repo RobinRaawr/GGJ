@@ -12,11 +12,13 @@ public class CollisionControl : MonoBehaviour {
 			GameControl.control.Player1.rigidbody.constraints = RigidbodyConstraints.None;
 			GameControl.control.Player2.rigidbody.constraints = RigidbodyConstraints.None;
 			GameControl.control.Rope.rigidbody.constraints = RigidbodyConstraints.None;
+            
 		}
 	}
 
 	public IEnumerator GameOver()
 	{
+        audio.Play();
 		GameControl.control.Load ();
 		if(GameControl.control.score > GameControl.control.highscore)
 		{

@@ -19,6 +19,11 @@ public class RestartGame : MonoBehaviour {
             Application.LoadLevel("Level1");
         }
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.LoadLevel("Start");
+        }
+
 	}
 }
 

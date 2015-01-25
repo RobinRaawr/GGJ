@@ -30,7 +30,7 @@ public class StartScherm: MonoBehaviour
     }
     void StartGame()
     {
-        if (!Input.GetKeyDown(startKey))
+        if (!Input.anyKey)
         {
             return;
         }
