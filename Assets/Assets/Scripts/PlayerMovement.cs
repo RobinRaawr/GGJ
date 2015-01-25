@@ -39,10 +39,6 @@ public class PlayerMovement : MonoBehaviour
                     currentLane--;
                     CantGoOffLane();
                     rope.GetComponent<RopeStretching>().StretchRope();
-                    hingeJoint.connectedBody = null;
-                    hingeJoint.connectedBody = rope.rigidbody;
-                    otherPlayer.hingeJoint.connectedBody = null;
-                    otherPlayer.hingeJoint.connectedBody = rope.rigidbody;
                 }
             }
         }
@@ -57,10 +53,6 @@ public class PlayerMovement : MonoBehaviour
                     currentLane++;
                     CantGoOffLane();
                     rope.GetComponent<RopeStretching>().StretchRope();
-                    hingeJoint.connectedBody = null;
-                    hingeJoint.connectedBody = rope.rigidbody;
-                    otherPlayer.hingeJoint.connectedBody = null;
-                    otherPlayer.hingeJoint.connectedBody = rope.rigidbody;
                 }
             }
         }
@@ -101,7 +93,6 @@ public class PlayerMovement : MonoBehaviour
 	
 	bool LaneFree(int lane)
 	{
-        Debug.Log(lane);
 		if (lane == otherPlayer.GetComponent<PlayerMovement> ().currentLane)
 			return false;
 		else

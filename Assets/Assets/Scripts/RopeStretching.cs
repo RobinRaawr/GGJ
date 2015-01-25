@@ -28,16 +28,17 @@ public class RopeStretching : MonoBehaviour {
 			{
 				ropebroke = true;
 				rigidbody.useGravity = true;
-				player1.hingeJoint.connectedBody = null;
-				player2.hingeJoint.connectedBody = null;
-				GetComponent<CollisionControl> ().GameOver ();
+				Destroy(player1.GetComponent<HingeJoint>());
+				Destroy(player2.GetComponent<HingeJoint>());
+				StartCoroutine(GetComponent<CollisionControl> ().GameOver ());
+			}
+			else
+			{
+			player1.hingeJoint.connectedBody = null;
+			player1.hingeJoint.connectedBody = rigidbody;
+			player2.hingeJoint.connectedBody = null;
+			player2.hingeJoint.connectedBody = rigidbody;
 			}
 		}
-	}
-
-	public void RotateRope(GameObject player)
-	{
-
-		transform.RotateAround (transform.position - (Vector3.back * 2), Vector3.left, 15);
 	}
 }

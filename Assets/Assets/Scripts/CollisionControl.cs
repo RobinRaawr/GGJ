@@ -15,9 +15,6 @@ public class CollisionControl : MonoBehaviour {
 			GameControl.control.Player1.rigidbody.constraints = RigidbodyConstraints.None;
 			GameControl.control.Player2.rigidbody.constraints = RigidbodyConstraints.None;
 			GameControl.control.Rope.rigidbody.constraints = RigidbodyConstraints.None;
-			//GameControl.control.Player1.hingeJoint.connectedBody = null;
-			//GameControl.control.Player2.hingeJoint.connectedBody = null;
-			Debug.Log("Enemy");
 		}
 	}
 
@@ -29,7 +26,7 @@ public class CollisionControl : MonoBehaviour {
 			//ToDO: Naam laten invullen, naam wordt ook gesaved
 			GameControl.control.Save();
 		}
-		yield return new WaitForSeconds (4);
+		yield return new WaitForSeconds (2);
 		Application.LoadLevel ("GameOver");
 	}
 }
